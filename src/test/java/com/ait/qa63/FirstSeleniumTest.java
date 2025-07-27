@@ -16,7 +16,7 @@ public class FirstSeleniumTest {
         driver = new ChromeDriver();
        driver.get("https://www.google.com/"); // open browser new without history
 //        driver.navigate().to("https://www.google.com/"); with browser history
-        driver.navigate().back(); // key back
+        // driver.navigate().back(); // key back
     }
 //    test
     @Test
