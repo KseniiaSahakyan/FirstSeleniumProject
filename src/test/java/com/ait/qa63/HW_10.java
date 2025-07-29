@@ -56,6 +56,25 @@ public class HW_10 {
         System.out.println(linkText3.getText());
     }
 
+    @Test
+    public void findElementByCssSelector() {
+        driver.findElements(By.cssSelector("title"));
+        driver.findElement(By.cssSelector("strong"));
+
+        driver.findElement(By.cssSelector("#newsletter-email"));
+        driver.findElement(By.cssSelector("#poll-block-1"));
+
+        driver.findElement(By.cssSelector(".poll-options"));
+        driver.findElement(By.cssSelector(".footer-menu-wrapper"));
+
+        driver.findElement(By.cssSelector("[href='/build-your-own-computer']"));
+        driver.findElement(By.cssSelector("[href='/customer/info']"));
+
+        driver.findElement(By.cssSelector("[href*='/build-your-own-computer']"));
+        driver.findElement(By.cssSelector("[href*='/customer/info']"));
+    }
+
+
     @AfterMethod
     public void tearDown() {
         driver.quit();

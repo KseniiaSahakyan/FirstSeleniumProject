@@ -91,4 +91,46 @@ public class FindElementTests {
         WebElement linkText1 = driver.findElement(By.partialLinkText("Los"));
         System.out.println(linkText1.getText());
     }
+
+    @Test
+    public void findElementByCssSelector() {
+        //driver.findElement(By.tagName("h1"));
+        // tagName "h1" => "h1"
+        driver.findElement(By.cssSelector("h1"));
+        driver.findElement(By.cssSelector("h2"));
+
+        //driver.findElement(By.id("city"));
+        //id = "city" => #city
+        driver.findElement(By.cssSelector("#city"));
+
+        // driver.findElement(By.className("telephone"));
+        //class= "telephone" => .telephone
+        driver.findElement(By.cssSelector(".telephone"));
+        driver.findElement(By.cssSelector(".navigation-link"));
+
+        // [key='value']
+        driver.findElement(By.cssSelector("[href='/search']"));
+        driver.findElement(By.cssSelector("[href='/let-car-work']"));
+
+        //contains => *
+        driver.findElement(By.cssSelector("[href*='/reg']"));
+        driver.findElement(By.cssSelector("[class*='offers']"));
+
+        //start -> ˆ
+        driver.findElement(By.cssSelector("[href^='/ter']"));
+        driver.findElement(By.cssSelector("[class^='red']"));
+
+        //end to-> $
+        driver.findElement(By.cssSelector("[href$='work']"));
+        driver.findElement(By.cssSelector("[class$='cities']"));
+
+        //one step above
+        driver.findElement(By.cssSelector(".logo>img"));
+        driver.findElement(By.cssSelector(".input-container [formcontrolname='city']"));
+
+        //<tag> or <class> or <id>:nth-child(n)
+        WebElement element = driver.findElement(By.cssSelector(".navigation-link:nth-child(6)"));
+        System.out.println(element.getText());
+    }
+
 }
