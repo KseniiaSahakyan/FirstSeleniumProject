@@ -74,7 +74,6 @@ public class HW_10 {
         driver.findElement(By.cssSelector("[href*='/customer/info']"));
     }
 
-
     @AfterMethod
     public void tearDown() {
         driver.quit();
