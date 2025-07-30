@@ -20,6 +20,11 @@ public class HW_10 {
         driver.get("https://demowebshop.tricentis.com/");
     }
 
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Test
     public void firstTest() {
         System.out.println("Shop is opened!");
@@ -36,7 +41,6 @@ public class HW_10 {
 
         WebElement id = driver.findElement(By.id("newsletter-email"));
         System.out.println(id.getSize());
-// size у id видимо нет, но почему?
         WebElement id1 = driver.findElement(By.id("poll-block-1"));
         System.out.println(id1.getText());
 
@@ -58,24 +62,47 @@ public class HW_10 {
 
     @Test
     public void findElementByCssSelector() {
+        //tagName
         driver.findElements(By.cssSelector("title"));
         driver.findElement(By.cssSelector("strong"));
 
+        // id
         driver.findElement(By.cssSelector("#newsletter-email"));
         driver.findElement(By.cssSelector("#poll-block-1"));
 
+        // className
         driver.findElement(By.cssSelector(".poll-options"));
         driver.findElement(By.cssSelector(".footer-menu-wrapper"));
 
+        //linkText
         driver.findElement(By.cssSelector("[href='/build-your-own-computer']"));
         driver.findElement(By.cssSelector("[href='/customer/info']"));
 
+        //partialLinkText
         driver.findElement(By.cssSelector("[href*='/build-your-own-computer']"));
         driver.findElement(By.cssSelector("[href*='/customer/info']"));
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
+    @Test
+    public void findElementByXpath() {
+        //tagName
+        driver.findElements(By.xpath("//title"));
+        driver.findElement(By.xpath("//strong"));
+
+        // id
+        driver.findElement(By.xpath("//*[@id='newsletter-email']"));
+        driver.findElement(By.xpath("//*[@id='poll-block-1']"));
+
+        // className
+        driver.findElement(By.xpath("//*[@class='poll-options']"));
+        driver.findElement(By.xpath("//*[@class='footer-menu-wrapper']"));
+
+        //linkText
+        driver.findElement(By.xpath("//*[text()='Build your own computer']"));
+        driver.findElement(By.xpath("//a[text()='My account']"));
+
+        //partialLinkText
+        driver.findElement(By.xpath("//a[contains(@href,'/build-your-own')]"));
+        driver.findElement(By.xpath("//a[contains(text(),'My account')]"));
     }
 }
