@@ -8,23 +8,14 @@ public class CreateAccountTests extends TestBase {
 
     @Test
     public void newUserRegistrationPositiveTest() {
-        driver.findElement(By.cssSelector("a.ico-register")).click();
-        driver.findElement(By.name("FirstName")).click();
-        driver.findElement(By.name("FirstName")).clear();
-        driver.findElement(By.name("FirstName")).sendKeys("Andrey1");
-        driver.findElement(By.name("LastName")).click();
-        driver.findElement(By.name("LastName")).clear();
-        driver.findElement(By.name("LastName")).sendKeys("Lebedev1");
-        driver.findElement(By.name("Email")).click();
-        driver.findElement(By.name("Email")).clear();
-        driver.findElement(By.name("Email")).sendKeys("pochtaksu@gmail.com");
-        driver.findElement(By.name("Password")).click();
-        driver.findElement(By.name("Password")).clear();
-        driver.findElement(By.name("Password")).sendKeys("Pochtaks$123");
-        driver.findElement(By.name("ConfirmPassword")).click();
-        driver.findElement(By.name("ConfirmPassword")).clear();
-        driver.findElement(By.name("ConfirmPassword")).sendKeys("Pochtaks$123");
-        driver.findElement(By.name("register-button")).click();
+        click(By.cssSelector("a.ico-register"));
+        type(By.name("FirstName"), "Andrey1");
+        type(By.name("LastName"), "Lebedev1");
+        type(By.name("Email"), "pochtaksu@gmail.com");
+        type(By.name("Password"), "Pochtaks$123");
+        type(By.name("ConfirmPassword"), "Pochtaks$123");
+        click(By.name("register-button"));
         Assert.assertTrue(isElementPresent(By.cssSelector("div.result")));
     }
+
 }

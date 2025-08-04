@@ -30,7 +30,19 @@ public class TestBase {
         return driver.findElements(locator).size() > 0;
     }
 
+    public String newEmail() {
+        int i = (int) (System.currentTimeMillis() / 1000 % 3600);
+        String email = "manuel" + i + "gmail.com";
+        return email;
+    }
 
-//    newEmail() - я не поняла что должен делать этот метод по заданию
+    public void type(By locator, String text) {
+        click(locator);
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(text);
+    }
 
+    public void click(By locator) {
+        driver.findElement(locator).click();
+    }
 }
