@@ -9,6 +9,22 @@ import org.testng.annotations.Test;
 
 public class ItemTests extends TestBase {
 
+    @BeforeMethod
+    public void precondition() {
+        app.getUser().clickOnLog_inLink();
+        app.getUser().enterUserCredentials();
+        app.getUser().clickOnLoginButton();
+    }
+
+    @Test
+    public void addItemToCart() {
+        app.getUser().clickOnItemLink("3");
+        app.getUser().clickOnShoppingCartLink();
+        Assert.assertTrue(app.getItem().isItemAdded("14.1-inch Laptop"));
+    }
+
+}
+
 //    @BeforeMethod
 //    public void precondition() {
 //        if (!app.getUser().clickOnLog_inLink()) {
@@ -37,18 +53,4 @@ public class ItemTests extends TestBase {
 //        Assert.assertTrue(app.getUser().isElementPresent(By.cssSelector("[href='/141-inch-laptop']")));
 //    }
 
-    @BeforeMethod
-    public void precondition() {
-        clickOnLog_inLink();
-        enterUserCredentials();
-        clickOnLoginButton();
-    }
 
-    @Test
-    public void addItemToCart() {
-        clickOnAddButton("3");
-        clickOnShoppingCartLink();
-        Assert.assertTrue(isItemAdded("14.1-inch Laptop"));
-    }
-
-}

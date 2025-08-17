@@ -27,12 +27,12 @@ public class UserHelper extends BaseHelper {
         click(By.cssSelector(".button-1.login-button"));
     }
 
-    public void fillRegisterForm() {
-        type(By.id("FirstName"), "John");
-        type(By.id("LastName"), "Doe");
-        type(By.id("Email"), "doe3@gm.com");
-        type(By.id("Password"), "Doe12345");
-        type(By.id("ConfirmPassword"), "Doe12345");
+    public void fillRegisterForm(UserData userData) {
+        type(By.id("FirstName"), userData.getUserName());
+        type(By.id("LastName"), userData.getUserLastName());
+        type(By.id("Email"), userData.getEmail());
+        type(By.id("Password"), userData.getPassword());
+        type(By.id("ConfirmPassword"), userData.getPassword());
     }
 
     public void enterUserCredentials() {
@@ -76,7 +76,19 @@ public class UserHelper extends BaseHelper {
 
     public boolean isSuccessMessagePresent() {
         return isElementPresent(By.cssSelector(".page-body .result"));
+    }
 
+
+    public void deleteUserIfExists(String email) {
+        if (isNewUserCreated(email)) {
+            clickDeleteForUser(email);
+        }
+    }
+
+    private void clickDeleteForUser(String email) {
+
+    }
+}
 
 //      }  public void fillInRequiredFields(UserData user) {
 //        type(By.cssSelector("#FirstName"), user.getUserName());
@@ -96,4 +108,4 @@ public class UserHelper extends BaseHelper {
 //        return false;
 //    }
 
-    }
+

@@ -13,8 +13,9 @@ public class CreateAccountTests extends TestBase {
     public void newUserRegistrationFromDataProviderWithCsvFilePositiveTest(UserData userData) {
         app.getUser().clickOnRegisterLink();
         app.getUser().fillRegisterForm(userData);
+       app.getUser().deleteUserIfExists(userData.getEmail());
 
-        Assert.assertTrue(app.getUser().isElementPresent(By.cssSelector(".page-body .result")));
+//        Assert.assertTrue(app.getUser().isElementPresent(By.cssSelector(".page-body .result")));
        Assert.assertTrue(app.getUser().isSuccessMessagePresent());
     }
 
@@ -31,12 +32,12 @@ public class CreateAccountTests extends TestBase {
 //        Assert.assertTrue(app.getUser().isElementPresent(By.cssSelector(".page-body .result")));
 //    }
 
-//    @Test
-//    public void newUserRegistrationPositiveTest() {
-//        clickOnRegisterLink();
-//        fillRegisterForm();
-//        clickOnRegisterButton();
-//        Assert.assertTrue(isSuccessMessagePresent());
-//    }
+    @Test
+    public void newUserRegistrationPositiveTest() {
+        app.getUser().clickOnRegisterLink();
+        app.getUser().fillRegisterForm(userData);
+        app.getUser().clickOnRegisterButton();
+        Assert.assertTrue(app.getUser().isSuccessMessagePresent());
+    }
 
 }
